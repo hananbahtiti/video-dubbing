@@ -64,14 +64,13 @@ class Audio:
 
         return vtt_list
 
-  def remove_timestamps(self ):
+  def remove_timestamps(self):
     texts_list = []
-    # تعبير نمطي لمطابقة وحذف التوقيت بين الأقواس المربعة
-    text = re.sub(r'\[\d{2}:\d{2}:\d{2}(?:\.\d{3})?\s*-->\s*\d{2}:\d{2}:\d{2}(?:\.\d{3})?\]:\s*', '', self.generate_webvtt())
+    vtt_entries = self.generate_webvtt()  # هذه القائمة تحتوي على النصوص مع التوقيتات
 
-    # تطبيق الوظيفة على كل عنصر في القائمة
-    cleaned_texts = [remove_timestamps(text) for text in texts]
-    for sentence in cleaned_texts:
-      texts_list.append(sentence)
+    for entry in vtt_entries:
+        # تعبير نمطي لمطابقة وحذف التوقيت بين الأقواس المربعة
+        cleaned_text = re.sub(r'\[\d{2}:\d{2}:\d{2}(?:\.\d{3})?\s*-->\s*\d{2}:\d{2}:\d{2}(?:\.\d{3})?\]:\s*', '', entry)
+        texts_list.append(cleaned_text)
+
     return texts_list
-  
