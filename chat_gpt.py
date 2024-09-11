@@ -7,13 +7,13 @@ Original file is located at
     https://colab.research.google.com/drive/1bLbEsozeICdOI087z48zh1JJtD6vxDxs
 """
 
-pip install openai
 
 from openai import OpenAI
 
 class ChatAPI:
   def __init__(self, prompt=None):
         self.prompt = prompt
+      
 
 
 
@@ -28,5 +28,3 @@ class ChatAPI:
       )
       return response.choices[0].message.content.strip()
 
-prompt = 'ترجم ملف json من اللغة الإنجليزية إلى اللغة العربية فقط ترجم ال value إلى اللغة العربية وابقي ال key باللغة الإنجليزي'
-ChatAPI(prompt).chat_gpt()
