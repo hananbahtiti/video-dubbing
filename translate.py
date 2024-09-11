@@ -17,7 +17,7 @@ class ChatAPI:
 
 
 
-  def chat_gpt(self, api_key=None):
+  def chatgptAPI(self, api_key=None):
       client = OpenAI(
       # defaults to os.environ.get("OPENAI_API_KEY")
       api_key = api_key,
