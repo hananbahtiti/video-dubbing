@@ -23,9 +23,13 @@ class Videos:
 
         # Configure yt-dlp options
         ydl_opts = {
-          'outtmpl': os.path.join(save_path, '%(id)s.%(ext)s'),
-          'format': 'best',
-          'use-extractors': 'all',
+          "outtmpl": os.path.join(save_path, '%(id)s.%(ext)s'),
+          "format": "best",
+          "use-extractors": "all",
+          "writesubtitles": False,
+          "writeautomaticsub": False,
+          # to suppress ffmpeg's stdout output
+          "quiet": True,
           }
 
         try:
