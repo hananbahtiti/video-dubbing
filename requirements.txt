@@ -4,3 +4,4 @@ moviepy==1.0.3
 spleeter 
 openai-whisper==20231117
 TTS==0.22.0
+pydub==0.25.1
