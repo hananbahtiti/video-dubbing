@@ -8,9 +8,17 @@ class Audio:
     self.audio_path = audio_path
     self.whisper_model = whisper_model
     self.model = None
+    self.current_path = os.getcwd()
 
 
-  def spleeter(self, output_folder = '/content/song/audio'):
+  def spleeter(self, output_folder = None):
+    if output_folder is None:
+        output_folder = f'{self.current_path}/song/audio'
+
+    # Create the save directory if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+      
     command = f"spleeter separate -p spleeter:2stems -o {output_folder} {self.audio_path}"
     os.system(command)
 
