@@ -1,6 +1,7 @@
 import yt_dlp  # A powerful YouTube video downloader library
 import os  # Library for interacting with the operating system
 from moviepy.editor import VideoFileClip  # Library to manipulate videos
+import uuid
 
 class Videos:
     def __init__(self, URL=None, file_video=None):
@@ -12,6 +13,7 @@ class Videos:
         self.URL = URL  # Stores the video URL
         self.file_video = file_video  # Stores the video file path
         self.current_path = os.getcwd()  # Gets the current working directory
+        self.unique_id = uuid.uuid4()    # Create a unique UUID
 
     def download_video(self, URL, save_path=None):
         """
@@ -70,7 +72,8 @@ class Videos:
         # Load the video file
         try:
             # Extract the filename and extension from the video path
-            filename, file_extension = os.path.splitext(path_video.split('/')[-1])
+            _ , file_extension = os.path.splitext(path_video.split('/')[-1])
+            filename = self.unique_id
 
             # Define paths for the video-only file and the audio file
             file_video_only = f"{folder_separate}{filename}.mp4"
@@ -79,7 +82,7 @@ class Videos:
             # Load the video file using MoviePy
             video = VideoFileClip(path_video, verbose=False)  # Load video without logging
             print("Video file loaded successfully.")
-            
+
         except Exception as e:
             # Handle exceptions when loading the video file
             print(f"Error loading video file: {e}")
@@ -109,6 +112,6 @@ class Videos:
             except Exception as e:
                 # Handle exceptions when saving the video without audio
                 print(f"Error saving video without audio: {e}")
-        
+
         # Return the paths to the video without audio and the audio file
         return file_video_only, file_audio
