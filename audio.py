@@ -4,7 +4,7 @@ import whisper
 import re
 
 class Audio:
-    def init(self, audio_path, whisper_model='large'):
+    def __init__(self, audio_path, whisper_model='large'):
         """
         Initializes the Audio class with an audio path and a Whisper model.
         
@@ -28,12 +28,10 @@ class Audio:
         Returns:
         str: Path to the renamed vocals audio file.
         """
-        if output_folder is None:
-            output_folder = f'{self.current_path}/song/audio'
-
         # Create the save directory if it doesn't exist
-        if not os.path.exists(output_folder):
-            os.makedirs(output_folder)
+        output_folder = f'{self.current_path}/song/audio'
+        os.makedirs(output_folder, exist_ok=True)
+        
           
         # Run the Spleeter command to separate vocals and accompaniment
         command = f"spleeter separate -p spleeter:2stems -o {output_folder} {self.audio_path}"
