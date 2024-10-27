@@ -8,4 +8,4 @@ pydub==0.25.1
 fastapi
 uvicorn
 pyngrok
-python-multipart
+python-multipart==0.0.12
