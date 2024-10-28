@@ -1,9 +1,9 @@
+openai-whisper==20231117
+yt_dlp==2024.8.6 
 numpy==1.23.0
 openai==0.27.0
-yt_dlp==2024.8.6 
 moviepy==1.0.3
 spleeter 
-openai-whisper==20231117
 TTS==0.22.0
 pydub==0.25.1
 fastapi
