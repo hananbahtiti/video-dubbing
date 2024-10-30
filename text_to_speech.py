@@ -39,7 +39,7 @@ class TextToSpeech:
       audio = AudioSegment.from_wav(file)
       combined += audio
 
-    path_final_audio = f"{self.current_path}/audio_files/final_{audio_voice_clone}.wav"
+    path_final_audio = f"{self.current_path}/audio_files/final_{audio_audio}.wav"
     combined.export(path_final_audio, format="wav")
 
     print("تم تحويل النصوص إلى صوت ودمجها بنجاح!")
