@@ -8,7 +8,7 @@ Original file is located at
 """
 
 
-from openai import OpenAI
+import openai
 
 class ChatAPI:
   def __init__(self, prompt=None):
@@ -18,11 +18,8 @@ class ChatAPI:
 
 
   def chatgptAPI(self, api_key=None):
-      client = OpenAI(
-      # defaults to os.environ.get("OPENAI_API_KEY")
-      api_key = api_key,
-      )
-      response = client.chat.completions.create(
+      openai.api_key = api_key
+      response = openai.ChatCompletion.create(
           model="gpt-4o",
           messages=[{"role": "user", "content": self.prompt}]
       )
