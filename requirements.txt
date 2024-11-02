@@ -10,4 +10,4 @@ fastapi
 uvicorn
 pyngrok
 python-multipart==0.0.12
-
+librosa==0.8.0  
