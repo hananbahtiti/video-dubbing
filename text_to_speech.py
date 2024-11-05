@@ -27,11 +27,11 @@ class TextToSpeech:
     audio_audio = os.path.splitext(path_audio.split('/')[-1])[0]
 
 
-    for idx, text in enumerate(self.text):
-      output_path = os.path.join(output_folder, f"{audio_audio}_{idx}.wav")
+    for timestamps, text in self.text.items():
+      output_path = os.path.join(output_folder, f"{timestamps}.wav")
       tts.tts_to_file(text=text, speaker_wav=audio_voice_clone, language=language, file_path=output_path)
       audio_files.append(output_path)
-      print (idx, text)
+      print ( timestamps, text)
 
     combined = AudioSegment.from_wav(audio_files[0])
 
