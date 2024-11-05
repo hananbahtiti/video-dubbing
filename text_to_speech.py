@@ -14,17 +14,17 @@ class TextToSpeech:
 
 
   def convert_TTS(self, output_folder=None, path_audio=None , audio_voice_clone=None, language='en'):
+    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(self.device)
+    audio_files = []
+    audio_audio = os.path.splitext(path_audio.split('/')[-1])[0]
     # Create the save directory if it doesn't exist
-    output_folder = f'{self.current_path}/audio_files'
+    output_folder = f'{self.current_path}/audio_files/{audio_audio}'
     os.makedirs(output_folder, exist_ok=True)
 
     if not os.path.isfile(path_audio):
         raise FileNotFoundError(f"The audio file at {path_audio} does not exist.")
 
-    #device = "cuda" if torch.cuda.is_available() else "cpu"
-    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(self.device)
-    audio_files = []
-    audio_audio = os.path.splitext(path_audio.split('/')[-1])[0]
+    
 
 
     for timestamps, text in self.text.items():
