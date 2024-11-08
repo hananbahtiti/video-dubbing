@@ -28,6 +28,7 @@ class TextToSpeech:
 
 
     for timestamps, text in self.text.items():
+
       output_path = os.path.join(output_folder, f"{timestamps}.wav")
       tts.tts_to_file(text=text, speaker_wav=audio_voice_clone, language=language, file_path=output_path)
       audio_files.append(output_path)
